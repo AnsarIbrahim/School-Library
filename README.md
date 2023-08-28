@@ -72,7 +72,7 @@ A school library: hub of knowledge, books, digital resources. Supports learning,
 - **Gemfile.lock**
 - **license**
 - **Gemfile.lock**
-- **Add Person, Student and Teacher**
+- **Add Person, Student and Teacher in Classes**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
