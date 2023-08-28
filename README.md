@@ -67,6 +67,11 @@ A school library: hub of knowledge, books, digital resources. Supports learning,
 
 ### Key Features <a name="key-features"></a>
 
+- **Gemfile**
+- **Rubocop**
+- **Gemfile.lock**
+- **license**
+- **Gemfile.lock**
 - **Add Person, Student and Teacher**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
