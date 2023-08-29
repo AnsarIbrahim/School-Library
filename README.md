@@ -71,6 +71,7 @@ A school library: hub of knowledge, books, digital resources. Supports learning,
 - **Rubocop**
 - **Gemfile.lock**
 - **Add Person, Student and Teacher in Classes**
+- **Decorator design pattern**
 - **license**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -140,7 +141,6 @@ You can deploy this project using:
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- **Decorator design pattern**
 - **Set-Up associations**
 - **Add Basic UI**
 - **Refactor Codes**
