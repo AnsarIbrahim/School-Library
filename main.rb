@@ -1,4 +1,4 @@
-require_relative 'school_library/person'
+require_relative 'school_library/library/person'
 require_relative 'school_library/decorators/capitalize_decorator'
 require_relative 'school_library/decorators/trimmer_decorator'
 
