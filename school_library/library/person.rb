@@ -32,4 +32,8 @@ class Person < Nameable
   def add_rental(rental)
     @rentals << rental
   end
+
+  def self.all
+    ObjectSpace.each_object(self).to_a
+  end
 end
