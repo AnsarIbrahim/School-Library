@@ -1,39 +1,39 @@
-require_relative "../library/person"
-require_relative "../setup/book"
-require_relative "../setup/rental"
-require_relative "../setup/classroom"
+require_relative '../library/person'
+require_relative '../setup/book'
+require_relative '../setup/rental'
+require_relative '../setup/classroom'
 
 module CreateBook
-    def create_book
-    print "Title: "
+  def create_book
+    print 'Title: '
     title = gets.chomp
-    print "Author: "
+    print 'Author: '
     author = gets.chomp
     Book.new(title, author)
-    puts "Book created successfully."
+    puts 'Book created successfully.'
   end
 
   def create_rental
-    puts "Select a book from the following list by number:"
+    puts 'Select a book from the following list by number:'
     Book.all.each_with_index do |book, index|
       puts "(#{index + 1}) Title: #{book.title}, Author: #{book.author}"
     end
     book_index = gets.chomp.to_i
 
-    puts "Select a person from the following list by number (not id):"
+    puts 'Select a person from the following list by number (not id):'
     Person.all.each_with_index do |person, index|
       puts "(#{index + 1}) Name: #{person.name}, ID: #{person.id} Age: #{person.age}"
     end
     person_index = gets.chomp.to_i
 
     if person_index >= 1 && person_index <= Person.all.length
-      print "Date (YYYY-MM-DD): "
+      print 'Date (YYYY-MM-DD): '
       date = gets.chomp
 
       Rental.new(date, Book.all[book_index - 1], Person.all[person_index - 1])
-      puts "Rental created successfully."
+      puts 'Rental created successfully.'
     else
-      puts "Invalid person selection. Please select a valid person."
+      puts 'Invalid person selection. Please select a valid person.'
     end
   end
 
