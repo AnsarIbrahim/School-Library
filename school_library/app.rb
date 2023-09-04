@@ -10,11 +10,8 @@ class App
   extend Lists
 
   def self.run
-    loop do
-      display_menu
-      choice = gets.chomp.to_i
-      handle_choice(choice)
-      break if choice == 7
-    end
+    choice = display_menu
+    choice = handle_choice(choice) while choice != 7
+    puts 'Thank you for using the School Library App!'
   end
 end
