@@ -1,7 +1,7 @@
 require_relative '../library/person'
-require_relative '../setup/book'
-require_relative '../setup/rental'
-require_relative '../setup/classroom'
+require_relative '../models/book'
+require_relative '../models/rental'
+require_relative '../models/classroom'
 
 module CreateBook
   def create_book
