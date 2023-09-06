@@ -1,20 +1,20 @@
-require_relative '../library/person'
-require_relative '../library/student'
-require_relative '../library/teacher'
-require 'json'
+require_relative "../library/person"
+require_relative "../library/student"
+require_relative "../library/teacher"
+require "json"
 
 module CreatePerson
   def create_person
-    print 'Do you want to create a student (1) or a teacher (2)? [Input the number]: '
+    print "Do you want to create a student (1) or a teacher (2)? [Input the number]: "
     person_type = gets.chomp.to_i
-
+    App.set_should_save_data(true)
     case person_type
     when 1
-      create_person_with_details(Student, 'student')
+      create_person_with_details(Student, "student")
     when 2
-      create_person_with_details(Teacher, 'teacher')
+      create_person_with_details(Teacher, "teacher")
     else
-      puts 'Invalid choice. Please enter a valid option (1 for student, 2 for teacher).'
+      puts "Invalid choice. Please enter a valid option (1 for student, 2 for teacher)."
     end
   end
 
@@ -22,38 +22,38 @@ module CreatePerson
     person = create_person_logic(person_type, person_class)
 
     people_data = begin
-      JSON.parse(File.read('school_library/data/people.json'))
-    rescue StandardError
-      []
-    end
+        JSON.parse(File.read("school_library/data/people.json"))
+      rescue StandardError
+        []
+      end
 
     # Append the new person data to the existing data
     people_data << {
-      'Type' => person.is_a?(Student) ? 'Student' : 'Teacher',
-      'Name' => person.name,
-      'Age' => person.age,
-      'ID' => person.id
+      "Type" => person.is_a?(Student) ? "Student" : "Teacher",
+      "Name" => person.name,
+      "Age" => person.age,
+      "ID" => person.id,
     }
 
-    people_data.last['Specialization'] = person.specialization if person.is_a?(Teacher)
+    people_data.last["Specialization"] = person.specialization if person.is_a?(Teacher)
 
     # Write the updated people data to people.json
-    File.write('school_library/data/people.json', JSON.pretty_generate(people_data))
+    File.write("school_library/data/people.json", JSON.pretty_generate(people_data))
 
     puts "#{person_type.capitalize} created successfully."
   end
 
   def create_person_logic(person_type, person_class)
-    print 'Age: '
+    print "Age: "
     age = gets.chomp.to_i
-    print 'Name: '
+    print "Name: "
     name = gets.chomp
 
-    if person_type == 'student'
+    if person_type == "student"
       parent_permission = parent_permission?
       person = person_class.new(age, name: name, parent_permission: parent_permission)
-    elsif person_type == 'teacher'
-      print 'Specialization: '
+    elsif person_type == "teacher"
+      print "Specialization: "
       specialization = gets.chomp
       person = person_class.new(specialization, name: name, age: age)
     end
@@ -61,7 +61,7 @@ module CreatePerson
   end
 
   def parent_permission?
-    print 'Has parent permission? [Y/N]: '
-    gets.chomp.downcase == 'y'
+    print "Has parent permission? [Y/N]: "
+    gets.chomp.downcase == "y"
   end
 end
