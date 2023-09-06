@@ -19,19 +19,7 @@ module CreatePerson
   end
 
   def create_person_with_details(person_class, person_type)
-    print 'Age: '
-    age = gets.chomp.to_i
-    print 'Name: '
-    name = gets.chomp
-
-    if person_type == 'student'
-      parent_permission = parent_permission?
-      person = person_class.new(age, name: name, parent_permission: parent_permission)
-    elsif person_type == 'teacher'
-      print 'Specialization: '
-      specialization = gets.chomp
-      person = person_class.new(specialization, name: name, age: age)
-    end
+    person = create_person_logic(person_type, person_class)
 
     people_data = begin
       JSON.parse(File.read('school_library/data/people.json'))
@@ -53,6 +41,23 @@ module CreatePerson
     File.write('school_library/data/people.json', JSON.pretty_generate(people_data))
 
     puts "#{person_type.capitalize} created successfully."
+  end
+
+  def create_person_logic(person_type, person_class)
+    print 'Age: '
+    age = gets.chomp.to_i
+    print 'Name: '
+    name = gets.chomp
+
+    if person_type == 'student'
+      parent_permission = parent_permission?
+      person = person_class.new(age, name: name, parent_permission: parent_permission)
+    elsif person_type == 'teacher'
+      print 'Specialization: '
+      specialization = gets.chomp
+      person = person_class.new(specialization, name: name, age: age)
+    end
+    person
   end
 
   def parent_permission?

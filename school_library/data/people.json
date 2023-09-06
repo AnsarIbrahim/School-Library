@@ -11,5 +11,18 @@
     "Age": 35,
     "ID": 242,
     "Specialization": "Math"
+  },
+  {
+    "Type": "Student",
+    "Name": "Ansar",
+    "Age": 22,
+    "ID": 806
+  },
+  {
+    "Type": "Teacher",
+    "Name": "Mr",
+    "Age": 44,
+    "ID": 769,
+    "Specialization": "Math"
   }
 ]
