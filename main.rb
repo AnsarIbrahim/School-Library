@@ -1,10 +1,11 @@
 require_relative 'school_library/app'
+
 def main
   App.run
 end
 
 def display_menu
-  puts "\nPlease choose an option by enter a number:"
+  puts "\nPlease choose an option by entering a number:"
   puts '1. List all books'
   puts '2. List all people'
   puts '3. Create a person'
@@ -19,19 +20,19 @@ end
 def handle_choice(choice)
   case choice
   when 1
-    list_books
+    App.list_books
   when 2
-    list_people
+    App.list_people
   when 3
-    create_person
+    App.create_person
   when 4
-    create_book
+    App.create_book
   when 5
-    create_rental
+    App.create_rental
   when 6
     print 'Enter person ID: '
     person_id = gets.chomp.to_i
-    list_rentals_for_person(person_id)
+    App.list_rentals_for_person(person_id)
   else
     invalid_choice
   end

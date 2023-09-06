@@ -10,6 +10,8 @@ class Teacher < Person
     true
   end
 
+  attr_reader :specialization
+
   private
 
   def generate_random_id

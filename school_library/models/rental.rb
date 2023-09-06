@@ -10,4 +10,6 @@ class Rental
     book.rentals << self
     person.rentals << self
   end
+
+  def self.all; end
 end
