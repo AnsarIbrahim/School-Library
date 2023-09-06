@@ -66,6 +66,6 @@ class App
   def self.run
     choice = display_menu
     choice = handle_choice(choice) while choice != 7
-    puts 'Thanks for using the School Library!'
+    puts 'Exiting the School Library application. Goodbye!'
   end
 end

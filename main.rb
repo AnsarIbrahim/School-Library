@@ -39,9 +39,6 @@ def handle_choice(choice)
     print 'Enter person ID: '
     person_id = gets.chomp.to_i
     App.list_rentals_for_person(person_id)
-  when 7
-    puts 'Exiting the School Library application. Goodbye!'
-    exit
   else
     invalid_choice
   end

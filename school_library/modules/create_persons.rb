@@ -33,7 +33,6 @@ module CreatePerson
       person = person_class.new(specialization, name: name, age: age)
     end
 
-    # Load existing people data or initialize an empty array
     people_data = begin
       JSON.parse(File.read('school_library/data/people.json'))
     rescue StandardError
