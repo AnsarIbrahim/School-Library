@@ -53,7 +53,7 @@ class App
       if rentals_for_person.any?
         puts "Rentals for Person (ID: #{person_id}):"
         rentals_for_person.each do |rental|
-          puts "Date: #{rental['date']}, Book: \"#{rental['book']['title']}\" by #{rental['person']['name']}"
+          puts "Date: #{rental['date']}, Book: \"#{rental['book']['title']}\" rented by #{rental['person']['name']}"
         end
       else
         puts "No rentals found for Person (ID: #{person_id})."
