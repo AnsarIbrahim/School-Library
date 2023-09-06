@@ -1,0 +1,15 @@
+[
+  {
+    "Type": "Student",
+    "Name": "Ansar",
+    "Age": 6,
+    "ID": 967
+  },
+  {
+    "Type": "Teacher",
+    "Name": "John",
+    "Age": 35,
+    "ID": 242,
+    "Specialization": "Math"
+  }
+]

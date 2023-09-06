@@ -1,0 +1,14 @@
+[
+  {
+    "date": "2023-09-06",
+    "person": {
+      "id": 967,
+      "age": 6,
+      "name": "Ansar"
+    },
+    "book": {
+      "author": "James",
+      "title": "Avatar"
+    }
+  }
+]
