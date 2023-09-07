@@ -2,7 +2,7 @@ require_relative '../school_library/decorators/nameable'
 require_relative '../school_library/library/person'
 
 describe Person do
-  let(:person) { Person.new(1, name: 'John', age: 25, parent_permission: true) }
+  let(:person) { Person.new(1, name: 'Unknown', age: 25, parent_permission: true) }
 
   describe '#initialize' do
     it 'takes three parameters and returns a Person object' do
@@ -14,7 +14,7 @@ describe Person do
     end
 
     it 'should assign the correct name' do
-      expect(person.name).to eql 'John'
+      expect(person.name).to eql 'Unknown'
     end
 
     it 'should assign the correct age' do
@@ -63,7 +63,7 @@ describe Person do
 
   describe '#correct_name' do
     it 'returns the correct name' do
-      expect(person.correct_name).to eql 'John'
+      expect(person.correct_name).to eql 'Unknown'
     end
   end
 
@@ -72,6 +72,12 @@ describe Person do
       rental = double('Rental')
       person.add_rental(rental)
       expect(person.rentals).to include(rental)
+    end
+  end
+
+  describe 'when name is not provided' do
+    it 'defaults to "Unknown"' do
+      expect(person.name).to eql 'Unknown'
     end
   end
 end
