@@ -2,7 +2,7 @@ require_relative '../school_library/library/teacher'
 
 describe Teacher do
   before :each do
-    @teacher = Teacher.new('Math', name: 'John', age: 25)
+    @teacher = Teacher.new('Math')
   end
 
   describe '#initialize' do
@@ -10,13 +10,25 @@ describe Teacher do
       expect(@teacher).to be_an_instance_of Teacher
     end
     it 'should assign the correct name' do
-      expect(@teacher.name).to eql 'John'
+      expect(@teacher.name).to eql 'Unknown'
     end
     it 'should assign the correct age' do
-      expect(@teacher.age).to eql 25
+      expect(@teacher.age).to eql nil
     end
     it 'should assign the correct specialization' do
       expect(@teacher.specialization).to eql 'Math'
+    end
+    it 'should override the default name' do
+      @teacher_with_name = Teacher.new('Math', name: 'John')
+      expect(@teacher_with_name.name).to eql 'John'
+    end
+    it 'should override the default age' do
+      @teacher_with_age = Teacher.new('Math', age: 25)
+      expect(@teacher_with_age.age).to eql 25
+    end
+    it 'should override the default permission' do
+      @teacher_with_permission = Teacher.new('Math', age: 25, parent_permission: true)
+      expect(@teacher_with_permission.parent_permission).to eql true
     end
   end
 
