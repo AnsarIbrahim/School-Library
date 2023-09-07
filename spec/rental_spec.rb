@@ -2,7 +2,6 @@ require_relative '../school_library/models/rental'
 require_relative '../school_library/models/book'
 require_relative '../school_library/library/student'
 
-
 describe Rental do
   before :each do
     my_book = Book.new('My Book', 'Jane Doe')
