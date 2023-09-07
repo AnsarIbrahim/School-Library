@@ -1,13 +1,21 @@
-require "minitest/autorun"
-require_relative "../school_library/decorators/capitalize_decorator"
-require_relative "../school_library/decorators/trimmer_decorator"
-require_relative "../school_library/library/person"
+require_relative '../school_library/decorators/capitalize_decorator'
+require_relative '../school_library/decorators/trimmer_decorator'
+require_relative '../school_library/library/person'
 
-class TestDecorator < Minitest::Test
-  def test_capitalize_decorator
-    capitalized = CapitalizeDecorator.new(Person.new(1, name: "maximilianus", age: 25))
-    assert_equal "Maximilianus", capitalized.correct_name
-    trimmed = TrimmerDecorator.new(capitalized)
-    assert_equal "Maximilian", trimmed.correct_name
+describe CapitalizeDecorator do
+  describe '#should capitalize the name' do
+    it 'should capitalize the name' do
+      capitalized = CapitalizeDecorator.new(Person.new(1, name: 'maximilianus', age: 25))
+      capitalized.correct_name.should eql 'Maximilianus'
+    end
+  end
+end
+
+describe TrimmerDecorator do
+  describe '#should trim the name' do
+    it 'should trim the name' do
+      trimmed = TrimmerDecorator.new(Person.new(1, name: 'maximilianus ', age: 25))
+      trimmed.correct_name.should eql 'maximilian'
+    end
   end
 end
