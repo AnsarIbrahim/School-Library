@@ -8,19 +8,19 @@ describe Student do
 
   describe '#initialize' do
     it 'takes two parameters and returns a Student object' do
-      @student.should be_an_instance_of Student
+      expect(@student).to be_an_instance_of Student
     end
     it 'should assign the correct name' do
-      @student.name.should eql 'John'
+      expect(@student.name).to eql 'John'
     end
     it 'should assign the correct age' do
-      @student.age.should eql 25
+      expect(@student.age).to eql 25
     end
   end
 
   describe '#play_hooky' do
     it 'returns the correct message' do
-      @student.play_hooky.should eql '¯(ツ)/¯'
+      expect(@student.play_hooky).to eql '¯(ツ)/¯'
     end
   end
 end

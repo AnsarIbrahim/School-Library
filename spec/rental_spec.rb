@@ -11,27 +11,27 @@ describe Rental do
 
   describe '#new' do
     it 'takes three parameters and returns a Rental object' do
-      @rental.should be_an_instance_of Rental
+      expect(@rental).to be_an_instance_of Rental
     end
   end
 
   describe '#date' do
     it 'returns the correct rental date' do
-      @rental.date.should eql '1/1/2024'
+      expect(@rental.date).to eql '1/1/2024'
     end
   end
 
   describe '#person' do
     it 'assigns the correct person to the rental' do
-      @rental.person.name.should eql 'Rose'
-      @rental.person.age.should eql 22
+      expect(@rental.person.name).to eql 'Rose'
+      expect(@rental.person.age).to eql 22
     end
   end
 
   describe '#book' do
     it 'assigns the correct book to the rental' do
-      @rental.book.title.should eql 'My Book'
-      @rental.book.author.should eql 'Jane Doe'
+      expect(@rental.book.title).to eql 'My Book'
+      expect(@rental.book.author).to eql 'Jane Doe'
     end
   end
 end

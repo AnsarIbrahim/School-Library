@@ -7,22 +7,22 @@ describe Teacher do
 
   describe '#initialize' do
     it 'takes two parameters and returns a Teacher object' do
-      @teacher.should be_an_instance_of Teacher
+      expect(@teacher).to be_an_instance_of Teacher
     end
     it 'should assign the correct name' do
-      @teacher.name.should eql 'John'
+      expect(@teacher.name).to eql 'John'
     end
     it 'should assign the correct age' do
-      @teacher.age.should eql 25
+      expect(@teacher.age).to eql 25
     end
     it 'should assign the correct specialization' do
-      @teacher.specialization.should eql 'Math'
+      expect(@teacher.specialization).to eql 'Math'
     end
   end
 
   describe '#can_use_services?' do
     it 'returns true' do
-      @teacher.can_use_services?.should eql true
+      expect(@teacher.can_use_services?).to eql true
     end
   end
 end
