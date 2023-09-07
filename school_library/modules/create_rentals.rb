@@ -1,5 +1,3 @@
-# create_rentals.rb
-
 require_relative '../library/person'
 require_relative '../models/book'
 require_relative '../models/rental'

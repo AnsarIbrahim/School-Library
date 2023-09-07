@@ -2,6 +2,7 @@ require_relative 'person'
 
 class Student < Person
   attr_accessor :classroom
+  attr_reader :parent_permission
 
   def initialize(age, name: 'Unknown', parent_permission: true)
     super(generate_random_id, name: name, age: age, parent_permission: parent_permission)
