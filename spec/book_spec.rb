@@ -22,4 +22,12 @@ describe Book do
       expect(@book.author).to eql 'Jane Doe'
     end
   end
+
+  describe '#add_rental' do
+    it 'adds a rental to the rentals array' do
+      rental = double('Rental')
+      @book.add_rental(rental)
+      expect(@book.rentals).to include(rental)
+    end
+  end
 end
