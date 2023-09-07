@@ -15,9 +15,9 @@ end
 describe TrimmerDecorator do
   describe '#should trim the name' do
     it 'should trim the name' do
-      person = Person.new(1, name: 'maximilianus ', age: 25)
-      trimmed = TrimmerDecorator.new(person)
-      expect(trimmed.correct_name).to eql 'maximilianus'
+      person = Person.new(1, name: 'maximilianus', age: 25)
+      trimmed = TrimmerDecorator.new(person).correct_name
+      expect(trimmed).to eql 'maximilian'
     end
   end
 end
