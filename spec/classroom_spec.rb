@@ -8,7 +8,7 @@ describe Classroom do
 
   describe '#new' do
     it 'creates a Classroom instance given the label' do
-      @my_classroom.should be_an_instance_of Classroom
+      expect(@my_classroom).to be_an_instance_of Classroom
     end
   end
 
