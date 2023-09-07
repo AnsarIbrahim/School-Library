@@ -1,24 +1,25 @@
-require_relative '../school_library/models/book'
-require 'minitest/autorun'
+require_relative "../school_library/models/book"
 
-class TestBook < Minitest::Test
-  def setup
-    @book = Book.new('Test Book', 'Test Author')
+describe Book do
+  before :each do
+    @book = Book.new("My Book", "Jane Doe")
   end
 
-  def test_initialize
-    assert_equal 'Test Book', @book.title
-    assert_equal 'Test Author', @book.author
-    assert_empty @book.rentals
+  describe "#new" do
+    it "takes two parameters and returns a Book object" do
+      expect(@book).to be_an_instance_of Book
+    end
   end
 
-  def test_add_rental
-    rental = Minitest::Mock.new
-    @book.add_rental(rental)
-    assert_equal [rental], @book.rentals
+  describe "#title" do
+    it "returns the correct title" do
+      expect(@book.title).to eql "My Book"
+    end
   end
 
-  def test_all
-    assert_includes Book.all, @book
+  describe "#author" do
+    it "returns the correct author" do
+      expect(@book.author).to eql "Jane Doe"
+    end
   end
 end

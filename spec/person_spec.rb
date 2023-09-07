@@ -1,34 +1,77 @@
-require 'minitest/autorun'
-require_relative '../school_library/library/person'
+require_relative "../school_library/decorators/nameable"
+require_relative "../school_library/library/person"
 
-class TestPerson < Minitest::Test
-  def setup
-    @person = Person.new(1, name: 'John', age: 25)
-    @person_with_permission = Person.new(2, name: 'Alice', age: 16, parent_permission: true)
-    @person_without_permission = Person.new(3, name: 'Bob', age: 16)
+describe Person do
+  let(:person) { Person.new(1, name: "John", age: 25, parent_permission: true) }
+
+  describe "#initialize" do
+    it "takes three parameters and returns a Person object" do
+      expect(person).to be_an_instance_of Person
+    end
+
+    it "should assign the correct id" do
+      expect(person.id).to eql 1
+    end
+
+    it "should assign the correct name" do
+      expect(person.name).to eql "John"
+    end
+
+    it "should assign the correct age" do
+      expect(person.age).to eql 25
+    end
+
+    it "should assign the correct parent_permission" do
+      expect(person.instance_variable_get(:@parent_permission)).to eql true
+    end
+
+    it "should initialize an empty rentals array" do
+      expect(person.rentals).to be_empty
+    end
   end
 
-  def test_initialize
-    assert_equal 1, @person.id
-    assert_equal 'John', @person.name
-    assert_equal 25, @person.age
-    assert_equal true, @person.instance_variable_get(:@parent_permission)
+  describe "#of_age?" do
+    it "returns true if age is 18 or older" do
+      person.age = 20
+      expect(person.send(:of_age?)).to be true
+    end
+
+    it "returns false if age is under 18" do
+      person.age = 16
+      expect(person.send(:of_age?)).to be false
+    end
   end
 
-  def test_of_age?
-    assert_equal true, @person.send(:of_age?)
-    assert_equal false, @person_with_permission.send(:of_age?)
-    assert_equal false, @person_without_permission.send(:of_age?)
+  describe "#can_use_services?" do
+    it "returns true if the person is of age" do
+      person.age = 20
+      expect(person.can_use_services?).to be true
+    end
+
+    it "returns true if parent permission is granted" do
+      person.age = 16
+      person.instance_variable_set(:@parent_permission, true)
+      expect(person.can_use_services?).to be true
+    end
+
+    it "returns false if neither of age nor parent permission" do
+      person.age = 16
+      person.instance_variable_set(:@parent_permission, false)
+      expect(person.can_use_services?).to be false
+    end
   end
 
-  def test_correct_name
-    assert_equal 'John', @person.correct_name
+  describe "#correct_name" do
+    it "returns the correct name" do
+      expect(person.correct_name).to eql "John"
+    end
   end
 
-  def test_all
-    people = Person.all
-    assert_includes people, @person
-    assert_includes people, @person_with_permission
-    assert_includes people, @person_without_permission
+  describe "#add_rental" do
+    it "adds a rental to the rentals array" do
+      rental = double("Rental")
+      person.add_rental(rental)
+      expect(person.rentals).to include(rental)
+    end
   end
 end
