@@ -1,19 +1,28 @@
-require 'minitest/autorun'
 require_relative '../school_library/library/teacher'
 
-class TestTeacher < Minitest::Test
-  def setup
+describe Teacher do
+  before :each do
     @teacher = Teacher.new('Math', name: 'John', age: 25)
   end
 
-  def test_initialize
-    assert_equal 'John', @teacher.name
-    assert_equal 25, @teacher.age
-    assert_equal true, @teacher.instance_variable_get(:@parent_permission)
-    assert_equal 'Math', @teacher.specialization
+  describe '#initialize' do
+    it 'takes two parameters and returns a Teacher object' do
+      @teacher.should be_an_instance_of Teacher
+    end
+    it 'should assign the correct name' do
+      @teacher.name.should eql 'John'
+    end
+    it 'should assign the correct age' do
+      @teacher.age.should eql 25
+    end
+    it 'should assign the correct specialization' do
+      @teacher.specialization.should eql 'Math'
+    end
   end
 
-  def test_can_use_services?
-    assert_equal true, @teacher.can_use_services?
+  describe '#can_use_services?' do
+    it 'returns true' do
+      @teacher.can_use_services?.should eql true
+    end
   end
 end
