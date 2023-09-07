@@ -10,7 +10,7 @@ class Teacher < Person
     true
   end
 
-  attr_reader :specialization
+  attr_reader :specialization, :parent_permission
 
   private
 
